@@ -14,8 +14,8 @@
 		<form id="editproductForm" method="post"
 			action="/srm/secured/product/edit" th:object="${product}">
 			<fieldset>
-			
-				
+
+
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
@@ -67,17 +67,21 @@
 								class="form-control" th:value="${product.quantityInStock}">
 						</div>
 					</div>
-
 					<div class="col-md-6">
 						<div class="form-group">
 
-							<label for="supplier" >Supplier:</label> <span
+							<label for="supplier">Supplier:</label> <span
 								th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier}"
 								class="alert alert-danger"></span> <select name="supplier"
 								id="supplier" class="form-control" required="required">
-								<option value="${product.supplier.name}">Select a supplier</option>
-								<option th:each="supplier : ${suppliers}"
+								<option value="">Select a supplier</option>
+								<option th:if="${product.supplier == null}"
+									th:each="supplier : ${suppliers}"
 									th:value="${supplier.supplierId}" th:text="${supplier.name}"></option>
+								<option th:if="${product.supplier != null}"
+									th:each="supplier : ${suppliers}"
+									th:value="${supplier.supplierId}" th:text="${supplier.name}"
+									th:selected="${supplier.supplierId == product.supplier.supplierId}"></option>
 							</select>
 						</div>
 					</div>
@@ -98,9 +102,9 @@
 					<a href="/eregistrar/product/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
 					<button id="btnSubmit" type="submit"
 						class="btn btn-outline-success">Update product</button>
-				</div>		
+				</div>
 			</fieldset>
-			</form>
+		</form>
 	</th:block>
 </body>
 </html>

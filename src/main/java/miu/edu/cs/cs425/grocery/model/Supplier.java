@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,9 +23,17 @@ public class Supplier {
 	private int supplierNumber;
     private String name;
     private String contactPhoneNumber;
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
+    // one to many which means one supplier will have many products
+    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    
     private List<Product> products = new ArrayList<>();
     
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 	public Supplier(int supplierNumber, String name, String contactPhoneNumber) {
 		super();
 		this.supplierNumber = supplierNumber;
@@ -37,6 +46,11 @@ public class Supplier {
 	}
 	public int getSupplierId() {
 		return supplierId;
+	}
+	@Override
+	public String toString() {
+		return "Supplier [supplierId=" + supplierId + ", supplierNumber=" + supplierNumber + ", name=" + name
+				+ ", contactPhoneNumber=" + contactPhoneNumber + ", products=" + products + "]";
 	}
 	public void setSupplierId(int supplierId) {
 		this.supplierId = supplierId;

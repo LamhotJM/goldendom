@@ -19,6 +19,8 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long productId;
 	
+	// which means many products will relate to one supplier
+    // adding new column on many tables(products)
 	@ManyToOne()
 	@JoinColumn(name = "supplier_id", nullable = true)
 	private Supplier supplier;

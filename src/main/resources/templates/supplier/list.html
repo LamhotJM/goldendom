@@ -20,6 +20,7 @@
 					<th>supplier Number</th>
 					<th>Name</th>
 					<th>contactPhoneNumber</th>
+					<th>Products</th>
 					<th>Action</th>
 				</tr>
 			</thead>
@@ -29,6 +30,7 @@
 					<td th:text="${supplier.supplierNumber}"></td>
 					<td th:text="${supplier.name}"></td>
 					<td th:text="${supplier.contactPhoneNumber}"></td>
+					<td th:text="${supplier.products"></td>
 					<td><a
 						th:href="@{'/srm/secured/supplier/edit/' + ${supplier.supplierId}}">Edit</a>&nbsp;
 						<a
