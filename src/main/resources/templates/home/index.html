@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/master-layout}">
+<head>
+<title>E-Student Registration</title>
+</head>
+<body>
+	<th:block layout:fragment="content">
+		<h3>Welcome to the e Student Registration System</h3>
+		<hr />
+		<th:block style="font-size: 1em">
+            To browse and manage the <a href="/srm/secured/product/list">Product
+				List</a>
+		</th:block>
+		<hr />
+		<th:block style="font-size: 1em">
+            To browse and manage the <a
+				href="/srm/secured/supplier/list">Supplier List</a>
+		</th:block>
+	</th:block>
+</body>
+</html>

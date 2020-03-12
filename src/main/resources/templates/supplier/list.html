@@ -1,0 +1,45 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/master-layout}">
+<head>
+<title>E-Student Registration</title>
+</head>
+<body>
+	<th:block layout:fragment="content">
+		<h2>Supplier List</h2>
+		<br />
+		<a href="/srm/secured/supplier/new">Create a supplier</a>
+		<a href="/" id="linkBackHome">Back to home</a>
+		<br />
+		<br />
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>supplier ID</th>
+					<th>supplier Number</th>
+					<th>Name</th>
+					<th>contactPhoneNumber</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="supplier : ${suppliers}">
+					<td th:text="${supplier.supplierId}"></td>
+					<td th:text="${supplier.supplierNumber}"></td>
+					<td th:text="${supplier.name}"></td>
+					<td th:text="${supplier.contactPhoneNumber}"></td>
+					<td><a
+						th:href="@{'/srm/secured/supplier/edit/' + ${supplier.supplierId}}">Edit</a>&nbsp;
+						<a
+						th:href="@{'/srm/secured/supplier/delete/' + ${supplier.supplierId}}">Delete</a>
+					</td>
+				</tr>
+				<tr th:if="${suppliers.size() <1}">
+					<td colspan="12" style="text-align: center">No supplier available</td>
+				</tr>
+			</tbody>
+		</table>
+	</th:block>
+</body>
+</html>
